@@ -26,7 +26,9 @@ node index.js xxxxxxxxxxxx.csv
 ```
 
 if everything well,you can find result.csv in this folder.
+
 如果一切顺利，你可以在本文件夹里找到result.csv
+
 順調に進めば、本フォルダにresult.csv作られます
 
 
