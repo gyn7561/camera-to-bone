@@ -3,10 +3,12 @@ var fs = require("fs");
 const parse = require('csv-parse/lib/sync')
 const transform = require('stream-transform/lib/sync')
 const stringify = require('csv-stringify')
+var iconv = require('iconv-lite');
+
 
 // console.log(process.argv[2]);
 
-let strArr = fs.readFileSync(process.argv[2] || "G:\\PR\\MikuMikuDance\\UserFile\\Motion\\恋の魔法\\koinomahou camera .csv", "utf-8").split("\n");
+let strArr = fs.readFileSync(process.argv[2], "utf-8").split("\n");
 
 let csvArr = strArr.splice(4, strArr.length - 6)
 
@@ -117,5 +119,7 @@ stringify(exportDatas, {
 }, function (err, data) {
     console.log(prefix + data + endfix)
     let result = prefix + data + endfix;
-    fs.writeFileSync("result.csv", result);
+
+    var encoded = iconv.encode(result, 'shiftjis');
+    fs.writeFileSync("result.csv", encoded);
 })
